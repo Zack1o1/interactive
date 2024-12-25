@@ -1,0 +1,138 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-color: hsl(253, 36%, 5%);
+    --secondary-color: hsl(0, 0%, 100%);
+    --secondary-color-dark-1: hsl(0, 0%, 30%);
+    --secondary-color-dark-2: hsla(0, 0%, 100%, 0.1);
+    --primary-color-light-1: hsl(248, 9%, 18%);
+    --primary-color-light-2: hsl(255, 7%, 23%);
+    --accent-color-1: hsl(211, 74%, 48%);
+    --accent-color-2: hsl(33, 83%, 51%);
+    --accent-color-3: hsl(14, 67%, 47%);
+    font-family: sans-serif;
+}
+body{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    line-height: 1.5;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.title{
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.card{
+    border-radius: 5px;
+    display: inline-block;
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    position: relative;
+    background: var(--secondary-color-dark-2);
+}
+
+.card::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    position: relative;
+}
+.form::before,
+.form::after{
+    content:'';
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: -2;
+}
+.form::before{
+    content:'';
+    background-color: var(--accent-color-1);
+    top: -6rem;
+    left: -6rem;
+}
+.form::after{
+    content:'';
+    background-color: var(--accent-color-2);
+    bottom: -6rem;
+    right: -6rem;
+}
+input{
+    padding: .8rem .4rem;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--secondary-color-dark-2);
+    color: var(--secondary-color);
+}
+input::placeholder{
+    font-size: .9rem;
+    line-height: 1;
+    color: var(--secondary-color);
+    opacity: .7;
+}
+input[type="text"]{
+    margin-bottom: 2rem;
+}
+input[type="password"]{
+    margin-bottom: 4rem;
+}
+
+label{
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    opacity: .9;
+    padding-bottom: .5rem;
+}
+
+.social-login{
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+.button{
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    text-align: center;
+}
+.secondary-button{
+    background-color: var(--primary-color-light-2);
+    color: var(--secondary-color);
+    width: 100%;
+}
+
+@media (max-width:800px){
+    .form{
+        width: 70vw;
+    }
+}

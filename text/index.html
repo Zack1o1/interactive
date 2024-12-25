@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgba(0,0,0,.1);
+        }
+
+        h1::after{
+            content: '';
+            animation: animate 3s ease-in infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 10rem;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 
+            0 2px 4px rgba(0,0,0,.1),
+            0 4px 8px rgba(0,0,0,.1),
+            0 8px 16px rgba(0,0,0,.1),
+            0 16px 32px rgba(0,0,0,.1);
+
+        }
+        @keyframes animate {
+            0%{
+                content: '';  
+            }
+            10%{
+                content: 'I';
+            }
+            20%{
+                content: 'I a';
+            }
+            40%{
+                content: 'I am';
+            }
+            60%{
+                content: 'I am Z';
+            }
+            70%{
+                content: 'I am Za';
+            }
+            80%{
+                content: 'I am Zac';
+            }
+            100%{
+                content: 'I am Zack';
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Loader</title>
+    <style>
+        body{
+            display: grid;
+            place-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+        }
+        svg{
+            width: 100vw;
+            height: 100vh;
+        }
+        text{
+            font-size: 132px;
+            letter-spacing: 4px;
+            stroke-width: 3;
+            fill: transparent;
+            animation: animate-stroke 5s alternate infinite .5s;
+        }
+        @keyframes animate-stroke{
+            0%{
+                fill: transparent;
+                stroke: white;
+                stroke-width: 4;
+                stroke-dashoffset: 16%;
+                stroke-dasharray: 0 10%;
+
+            }
+            50%{
+                fill: transparent;
+                stroke: white;
+                stroke-width: 4;
+
+            }
+            80%
+            ,100%{
+                fill: white;
+                stroke: transparent;
+                stroke-width: 4;
+                stroke-dashoffset: -16%;
+                stroke-dasharray: 8% 0;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <svg>
+        <text x="50%" y="50%" text-anchor="middle">Loading...</text>
+    </svg>
+</body>
+</html>

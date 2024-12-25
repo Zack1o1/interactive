@@ -1,0 +1,278 @@
+:root {
+    --base-font-size: 16px;
+    --base-scale-ratio:1.333;
+    --base-spacing: 32px;
+    --base-dimension: 200px;
+    --base-bg-color: bisque;
+    --base-text-color: #ffffff;
+    --base-btn-color: #A51818;
+    --base-btn-hover-color: #a51818b9;
+    --base-scale: 1.2;
+    --base-transition: .8s;
+    --base-transition-timing-func: ease-in-out;
+
+}
+
+
+
+/* Reset margin, padding, and box-sizing for all elements and their pseudo-elements */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+    scrollbar-color: red;
+}
+
+/* Set default font family and size for the body */
+body {
+    font-family: "Poppins", serif;
+    font-size: var(--base-font-size);
+    position: relative;
+}
+
+/* Ensure images cover their container without distortion */
+img,video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Remove default link styling and inherit color */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Style the main container with padding and background color */
+.container {
+    width: 100%;
+    padding: var(--base-spacing);
+    background-color: var(--base-bg-color);
+}
+
+/* Add padding to the header inside the container */
+.container .header {
+    color: var(--base-btn-color);
+    padding-bottom: calc(var(--base-spacing) - 8px);
+    font-size: calc(var(--base-font-size) * var(--base-scale-ratio));
+}
+
+/* Create a responsive grid layout for the gallery container */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--base-dimension), 1fr));
+    gap: calc(var(--base-spacing) / 2);
+}
+
+/* Style individual gallery items */
+.gallery {
+    width: 100%;
+    height: calc(var(--base-dimension) * 2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Apply initial transform and transition to gallery images */
+.gallery img {
+    transform: scale(var(--base-scale));
+    transition: transform var(--base-transition) var(--base-transition-timing-func);
+}
+
+/* Style the figcaption pseudo-element with background overlay */
+.gallery figcaption::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(31, 28, 28, 0.5);
+    z-index: 1;
+    opacity: 0;
+    transition: 
+    opacity calc(var(--base-transition) + .2s) var(--base-transition-timing-func),
+    background-color calc(var(--base-transition) + .2s) var(--base-transition-timing-func);
+}
+
+/* Style the figcaption element with centered content and transitions */
+.gallery figcaption {
+    font-size: calc(var(--base-font-size));
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    color: var(--base-text-color);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: calc(var(--base-spacing) * 3);
+    padding: 0 calc(var(--base-spacing));
+    z-index: 1;
+    transition: opacity var(--base-transition) var(--base-transition-timing-func);
+}
+
+/* Style the main content inside figcaption with initial transform and opacity */
+.gallery figcaption main {
+    font-size: calc((var(--base-font-size)));
+    opacity: 0;
+    display: grid;
+    gap: calc(var(--base-spacing) / 2);
+    transform: translateY(-64px);
+    transition: 
+            transform var(--base-transition) var(--base-transition-timing-func),
+            opacity var(--base-transition) var(--base-transition-timing-func);
+}
+
+/* Set font size for paragraphs inside figcaption main */
+.gallery figcaption main p {
+    font-size: .7em;
+    letter-spacing: .6px;
+}
+
+/* Hide span elements inside figcaption footer */
+.gallery figcaption footer span {
+    display: none;
+}
+
+/* Ensure main and footer elements inside figcaption are above the overlay */
+.gallery figcaption main,
+.gallery figcaption footer {
+    z-index: 1;
+}
+
+/* Style the button inside figcaption footer with initial transform and opacity */
+.gallery figcaption footer .button,
+.gallery:hover figcaption main{
+    opacity: 0;
+    transform: translateY(calc(var(--base-spacing) * 2));
+    transition: 
+            transform var(--base-transition) var(--base-transition-timing-func),
+            opacity var(--base-transition) var(--base-transition-timing-func);
+}
+
+/* Ensure links inside buttons take up full space */
+.button a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+hr{
+    width: 1px;
+}
+/* Style the button with background color, text color, padding, and cursor */
+.button {
+    background-color: var(--base-btn-color);
+    color: var(--base-text-color);
+    padding: calc(var(--base-spacing)/2) 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: calc(var(--base-font-size));
+    letter-spacing: .8px;
+}
+
+/* Button hover effect */
+.button:hover {
+    background-color: var(--base-btn-hover-color); 
+}
+
+/* Apply hover effects to gallery elements */
+.gallery:hover figcaption,
+.gallery:hover figcaption::before,
+.gallery:hover figcaption main,
+.gallery:hover figcaption footer .button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reset image transform on hover */
+.gallery:hover img {
+    transform: scale(1);
+}
+
+.container.video-bg {
+    position: relative;
+    height: calc(var(--base-dimension) * 3);
+    overflow: hidden;
+}
+
+.video-container video{
+    position: absolute;
+    inset: 0;
+    padding: var(--base-spacing) 0;
+    height: 100%;
+}
+
+.video-container .video {
+    opacity: .5;
+    transform: translateY(0) scale(1);
+    transition:
+        opacity var(--base-transition) var(--base-transition-timing-func),
+        transform var(--base-transition) var(--base-transition-timing-func);
+}
+
+.video-bg:hover .video {
+    opacity: 1;
+    transform: translateY(0) scale(1.5);
+}
+
+.click{
+    height: 300px;
+    position: absolute;
+    inset: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 222;
+}
+.cursor{
+    position: absolute;
+    inset: 16px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #efefef9d;
+    transition: transform 0.05s ease-out;
+    z-index: 111111111;
+}
+
+@media screen and (min-width: 696px) {
+  .gallery-container{
+    grid-template-columns: repeat(auto-fill, minmax(calc(var(--base-dimension) + 104px), 1fr));
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+    :root{
+        --base-font-size: 20px;
+    }
+    .container {
+        padding: calc(var(--base-spacing) * 2);
+    }
+    .container .header{
+        padding-bottom: calc((var(--base-spacing) + 8px));
+    }
+    
+    
+}
+
+@media screen and (min-width: 1024px) {
+    :root{
+        --base-font-size: 24px;
+    }
+    
+    .container{
+        padding: calc(var(--base-spacing) * 4);
+    }
+    .container .header{
+        padding-bottom: calc((var(--base-spacing) + 16px));
+    }
+    .video-container {
+        padding:  calc(var(--base-spacing) * 4) 0;
+       
+    }
+    .container.video-bg {
+        height: calc(var(--base-dimension) * 4);
+    }
+    
+}
